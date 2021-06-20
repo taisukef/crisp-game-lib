@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<title>SE Type</title>
+<script type="module">
+import { onLoad, ticks, input, end, vec, rnd, addScore, remove, text, play, color } from "./main.js";
+
+window.title = "SE Type";
+window.description = `[Tap] to next`;
+window.options = {
+  isPlayingBgm: false,
+  seed: 0, // sound seed
+  theme: document.location.hash.substring(1), // crt, pixel, dark
+};
+
+const soundType = ["coin", "laser", "explosion", "powerUp", "hit", "jump", "select", "lucky"];
+let no = 0;
+
+window.update = () => {
+  color("yellow");
+  const centerX = 100 / 2 - soundType[no].length * 6 / 2;
+  text(soundType[no], centerX, 50);
+
+  if (input.isJustPressed) {
+    play(soundType[no]);
+    no = (no + 1) % soundType.length;
+  }
+};
+
+window.addEventListener("load", onLoad);
+</script>
+</head>
+</html>
