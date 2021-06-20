@@ -7,9 +7,9 @@ import { LetterImage, letterSize } from "./letter";
 import { getGridFilter } from "./filters";
 import { filter as filter_crt } from "../../filters/es/filter-crt.js";
 import { filter as filter_advancedbloom } from "../../filters/es/filter-advanced-bloom.js";
+import { mcc as gcc } from "../../../util/mp4-capture-canvas/mcc.js";
 PIXI.filters.CRTFilter = filter_crt;
 PIXI.filters.AdvancedBloomFilter = filter_advancedbloom;
-declare const gcc;
 
 export const size = new Vector();
 export let canvas: HTMLCanvasElement;

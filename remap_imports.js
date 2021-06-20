@@ -2,7 +2,8 @@ const map = {
   "../..//pixijs/es/pixi.v5.3.9.min.js": "https://taisukef.github.io/pixijs/es/pixi.v5.3.9.min.js",
   "../../sounds-some-sounds/sss.js": "https://taisukef.github.io/sounds-some-sounds/sss.js",
   "../../filters/es/filter-crt.js": "https://taisukef.github.io/filters/es/filter-crt.js",
-  "../../filters/es/filter-advanced-bloom.js": "https://taisukef.github.io/filters/es/filter-advanced-bloom.js", 
+  "../../filters/es/filter-advanced-bloom.js": "https://taisukef.github.io/filters/es/filter-advanced-bloom.js",
+  "../../../util/mp4-capture-canvas/mcc.js": "https://taisukef.github.io/mp4-capture-canvas/mcc.js",
 };
 
 const path = "./es/";

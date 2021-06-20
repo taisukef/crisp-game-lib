@@ -6,6 +6,8 @@ import { letterSize } from "./letter.js";
 import { getGridFilter } from "./filters.js";
 import { filter as filter_crt } from "https://taisukef.github.io/filters/es/filter-crt.js";
 import { filter as filter_advancedbloom } from "https://taisukef.github.io/filters/es/filter-advanced-bloom.js";
+//declare const gcc;
+import { mcc as gcc } from "https://taisukef.github.io/mp4-capture-canvas/mcc.js";
 PIXI.filters.CRTFilter = filter_crt;
 PIXI.filters.AdvancedBloomFilter = filter_advancedbloom;
 export const size = new Vector();
