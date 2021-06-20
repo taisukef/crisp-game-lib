@@ -1,6 +1,5 @@
 import { VectorLike } from "./vector";
-import { vec, color } from "./main";
-import * as input from "./input";
+import { vec, color, input } from "./main";
 import { rect } from "./rect";
 import { text } from "./letter";
 

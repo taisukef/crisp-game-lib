@@ -1,5 +1,4 @@
-import { vec, color } from "./main.js";
-import * as input from "./input.js";
+import { vec, color, input } from "./main.js";
 import { rect } from "./rect.js";
 import { text } from "./letter.js";
 export function get({ pos, size, text, isToggle = false, onClick = () => { }, }) {

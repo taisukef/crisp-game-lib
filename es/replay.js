@@ -1,5 +1,4 @@
-import * as input from "./input.js";
-import { vec } from "./main.js";
+import { vec, input } from "./main.js";
 let record;
 let inputIndex;
 let frameStates;

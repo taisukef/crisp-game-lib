@@ -1,8 +1,8 @@
 import * as view from "./view.js";
 import * as letter from "./letter.js";
-import * as input from "./input.js";
 //import * as color from "./color";
 import * as color from "./color.js";
+import { input } from "./main.js";
 import * as sss from "https://taisukef.github.io/sounds-some-sounds/sss.js";
 let lastFrameTime = 0;
 let _init;

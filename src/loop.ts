@@ -1,10 +1,9 @@
 import * as view from "./view";
 import * as letter from "./letter";
-import * as input from "./input";
 //import * as color from "./color";
 import * as color from "./color";
 import { VectorLike } from "./vector";
-import { Theme } from "./main";
+import { Theme, input } from "./main";
 import * as sss from "../../sounds-some-sounds/sss.js";
 //declare const sss;
 type Color = color.Color;
