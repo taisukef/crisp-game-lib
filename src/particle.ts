@@ -7,6 +7,8 @@ import {
   saveCurrentColor,
   loadCurrentColor,
 } from "./view";
+import { Color } from "./color";
+import { clamp } from "./util";
 
 type Particle = {
   pos: Vector;

@@ -1,6 +1,7 @@
 import * as input from "./input";
 import { Vector } from "./vector";
 import { Random } from "./random";
+import { vec } from "./main";
 declare const cloneDeep;
 
 type RecordedInput = {

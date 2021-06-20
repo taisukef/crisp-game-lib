@@ -1,4 +1,5 @@
-import * as PIXI from "pixi.js";
+//import * as PIXI from "pixi.js";
+import { PIXI } from "../..//pixijs/es/pixi.v5.3.9.min.js";
 import { textPatterns } from "./textPattern";
 import {
   fillRect,

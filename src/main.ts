@@ -19,7 +19,9 @@ import {
 } from "./button";
 
 import * as replay from "./replay";
-declare const sss;
+import * as sss from "../../sounds-some-sounds/sss.js";
+//declare const sss;
+
 declare const Terser;
 declare const cloneDeep;
 
@@ -431,7 +433,8 @@ function updateInGame() {
     time++;
   }
   if (isSpeedingUpSound && ticks % soundSpeedingUpInterval === 0) {
-    sss.playInterval = 0.5 / sqrt(difficulty);
+    ///sss.playInterval = 0.5 / sqrt(difficulty);
+    sss.setPlayInterval(0.5 / sqrt(difficulty));
   }
 }
 
@@ -469,7 +472,8 @@ function updateTitle() {
       _particle.update();
     }
     if (isSpeedingUpSound && ticks % soundSpeedingUpInterval === 0) {
-      sss.playInterval = 0.5 / sqrt(difficulty);
+      //sss.playInterval = 0.5 / sqrt(difficulty);
+      sss.setPlayInterval(0.5 / sqrt(difficulty));
     }
   }
   if (ticks === 0) {

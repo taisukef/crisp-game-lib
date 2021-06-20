@@ -1,6 +1,5 @@
 //import * as PIXI from "pixi.js";
-import { PIXI } from "../..//pixijs/es/pixi.v5.3.9.min.js";
-
+import { PIXI } from "https://taisukef.github.io/pixijs/es/pixi.v5.3.9.min.js";
 const gridFilterFragment = `
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
@@ -19,10 +18,9 @@ void main(void) {
   gl_FragColor.rgba = color * v;
 }
 `;
-
-export function getGridFilter(width: number, height: number) {
-  return new PIXI.Filter(undefined, gridFilterFragment, {
-    width,
-    height,
-  });
+export function getGridFilter(width, height) {
+    return new PIXI.Filter(undefined, gridFilterFragment, {
+        width,
+        height,
+    });
 }

@@ -1,3 +1,9 @@
+import { VectorLike } from "./vector";
+import { vec, color } from "./main";
+import * as input from "./input";
+import { rect } from "./rect";
+import { text } from "./letter";
+
 export type Button = {
   pos: VectorLike;
   size: VectorLike;

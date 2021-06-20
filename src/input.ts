@@ -2,7 +2,8 @@ import * as keyboard from "./keyboard";
 import * as pointer from "./pointer";
 import * as view from "./view";
 import { Vector } from "./vector";
-declare const sss;
+import * as sss from "../../sounds-some-sounds/sss.js";
+//declare const sss;
 
 export let pos = new Vector();
 export let isPressed = false;

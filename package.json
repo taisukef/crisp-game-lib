@@ -4,7 +4,8 @@
   "description": "Develop one game within one hour",
   "scripts": {
     "watch_games": "light-server -s docs -w \"docs/**/* # # reload\"",
-    "watch_lib": "rollup -c -w"
+    "watch_lib": "rollup -c -w",
+    "es": "tsc -t ES2015 --outDir es src/*.ts; deno run -A remap_imports.js"
   },
   "author": "abagames",
   "license": "MIT",

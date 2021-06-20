@@ -1,9 +1,14 @@
-import * as PIXI from "pixi.js";
+//import { PIXI } from "https://taisukef.github.io/pixijs/es/pixi.v5.3.9.min.js";
+import { PIXI } from "../..//pixijs/es/pixi.v5.3.9.min.js";
 import { Vector, VectorLike } from "./vector";
 import { Theme } from "./main";
-import { colorToNumber, colorToStyle } from "./color";
+import { colorToNumber, colorToStyle, Color } from "./color";
 import { LetterImage, letterSize } from "./letter";
 import { getGridFilter } from "./filters";
+import { filter as filter_crt } from "../../filters/es/filter-crt.js";
+import { filter as filter_advancedbloom } from "../../filters/es/filter-advanced-bloom.js";
+PIXI.filters.CRTFilter = filter_crt;
+PIXI.filters.AdvancedBloomFilter = filter_advancedbloom;
 declare const gcc;
 
 export const size = new Vector();
