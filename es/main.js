@@ -220,6 +220,7 @@ export function onLoad() {
         bodyBackground: theme.isDarkColor ? "#101010" : "#e0e0e0",
         viewBackground: theme.isDarkColor ? "blue" : "white",
         theme,
+        highFps: opts.highFps,
     };
     seed = opts.seed;
     loopOptions.isCapturing = opts.isCapturing;
@@ -267,7 +268,7 @@ function init() {
         initTitle();
     }
 }
-function _update() {
+function _update(dt) {
     df = difficulty = ticks / 3600 + 1;
     tc = ticks;
     const prevScore = score;
@@ -281,14 +282,18 @@ function _update() {
         ijr: input.isJustReleased,
     };
     collision.clear();
-    updateFunc[state]();
+    if (ticks < 0) {
+        ticks = 0;
+    }
+    updateFunc[state](dt);
     if (view.theme.isUsingPixi) {
         view.endFill();
         if (view.theme.name === "crt") {
             view.updateCrtFilter();
         }
     }
-    ticks++;
+    //ticks++;
+    ticks += dt;
     if (isReplaying) {
         score = prevScore;
         time = prevTime;
@@ -324,7 +329,7 @@ function initInGame() {
         isReplaying = false;
     }
 }
-function updateInGame() {
+function updateInGame(dt) {
     terminal.clear();
     view.clear();
     if (!isDrawingParticleFront) {
@@ -341,7 +346,7 @@ function updateInGame() {
             isJustReleased: input.isJustReleased,
         });
     }
-    update();
+    update(dt);
     if (isDrawingParticleFront) {
         _particle.update();
     }
@@ -369,7 +374,7 @@ function initTitle() {
         isReplaying = true;
     }
 }
-function updateTitle() {
+function updateTitle(dt) {
     if (input.isJustPressed) {
         initInGame();
         return;
@@ -386,7 +391,7 @@ function updateTitle() {
         if (!isDrawingParticleFront) {
             _particle.update();
         }
-        update();
+        update(dt);
         if (isDrawingParticleFront) {
             _particle.update();
         }
@@ -464,10 +469,10 @@ function initRewind() {
         drawButton(giveUpButton);
     }
 }
-function updateRewind() {
+function updateRewind(dt) {
     terminal.clear();
     view.clear();
-    update();
+    update(dt);
     drawScoreOrTime();
     replay.restoreInput();
     if (isRewinding) {

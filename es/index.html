@@ -16,6 +16,7 @@ window.options = {
   seed: 0, // sound seed
   theme: document.location.hash.substring(1), // crt, pixel, dark
   viewSize: { x: 200, y: 100 },
+  highFps: true,
 };
 
 const sw = window.options.viewSize.x;
@@ -23,8 +24,9 @@ let y = 20;
 let x = sw / 2;
 const enemy = [];
 const dhit = 3;
-
-window.update = () => { // canvas size 100x100
+let enemyt = 10;
+window.update = (dt) => {
+  console.log(dt)
   if (!ticks) { // init
     enemy.length = 0;
   }
@@ -32,22 +34,24 @@ window.update = () => { // canvas size 100x100
     play("select");
   }
   if (input.isPressed) {
-    x++;
+    x += dt;
   } else {
-    x--;
+    x -= dt;
   }
   x = (x + sw) % sw;
   text("O", x, y);
   enemy.forEach(e => {
     text("*", e.x, e.y);
-    e.y--;
+    e.y -= dt;
     if (Math.abs(e.y - y) < dhit && Math.abs(e.x - x) < dhit) {
       end();
       play("explosion")
     };
   });
-  if (ticks % 10 == 0) {
-    enemy.push(vec(rnd(sw), 100))
+  enemyt -= dt;
+  if (enemyt < 0) {
+    enemyt = 10;
+    enemy.push(vec(rnd(sw), 110))
     addScore(1);
   }
   remove(enemy, (e) => e.y < -10);

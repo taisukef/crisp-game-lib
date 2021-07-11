@@ -22,6 +22,7 @@ export function init(__init, __update, _options) {
     _init = __init;
     _update = __update;
     options = Object.assign(Object.assign({}, defaultOptions), _options);
+    console.log(options, _options)
     color.init(options.theme.isDarkColor);
     view.init(options.viewSize, options.bodyBackground, options.viewBackground, options.isCapturing, options.theme);
     input.init();
@@ -33,13 +34,18 @@ function update() {
     requestAnimationFrame(update);
     const now = window.performance.now();
     const timeSinceLast = now - lastFrameTime;
-    if (timeSinceLast < 1000 / 60 - 5) {
+    if (!options.highFps && timeSinceLast < 1000 / 60 - 5) {
         return;
     }
     lastFrameTime = now;
+    //const dt = 1 / Math.round((1000 / 60) / timeSinceLast);
+    const dt = 1 / ((1000 / 60) / timeSinceLast);
+    if (dt == Infinity) {
+        return;
+    }
     sss.update();
     input.update();
-    _update();
+    _update(dt);
     if (options.isCapturing) {
         view.capture();
     }
