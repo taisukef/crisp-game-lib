@@ -22,7 +22,6 @@ export function init(__init, __update, _options) {
     _init = __init;
     _update = __update;
     options = Object.assign(Object.assign({}, defaultOptions), _options);
-    console.log(options, _options)
     color.init(options.theme.isDarkColor);
     view.init(options.viewSize, options.bodyBackground, options.viewBackground, options.isCapturing, options.theme);
     input.init();
