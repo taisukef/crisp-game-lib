@@ -542,7 +542,7 @@ function updateScoreBoards(dt) {
     view.setColor("black");
     scoreBoards = scoreBoards.filter((sb) => {
         print(sb.str, sb.pos.x, sb.pos.y);
-        sb.pos.y += sb.vy;
+        sb.pos.y += sb.vy * dt;
         sb.vy *= 0.9;
         sb.ticks -= dt;
         return sb.ticks > 0;
