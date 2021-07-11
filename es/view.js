@@ -94,11 +94,20 @@ image-rendering: pixelated;
         canvas.style.cssText = canvasCss + crispCss;
     }
     document.body.appendChild(canvas);
-    const cs = 95;
-    const cw = canvasSize.x >= canvasSize.y ? cs : (cs / canvasSize.y) * canvasSize.x;
-    const ch = canvasSize.y >= canvasSize.x ? cs : (cs / canvasSize.x) * canvasSize.y;
-    canvas.style.width = `${cw}vmin`;
-    canvas.style.height = `${ch}vmin`;
+
+    const setSize = () => {
+        const cs = .95;
+        const wr = innerWidth / innerHeight;
+        const cr = canvasSize.x / canvasSize.y;
+        const flgwh = wr < cr;
+        const cw = flgwh ? cs * innerWidth : cs * innerHeight * cr;
+        const ch = !flgwh ? cs * innerHeight : cs * innerWidth / cr;
+        canvas.style.width = `${cw}px`;
+        canvas.style.height = `${ch}px`;
+    };
+    window.addEventListener("resize", setSize);
+    setSize();
+    
     if (isCapturing) {
         captureCanvas = document.createElement("canvas");
         if (canvasSize.x <= canvasSize.y * 2) {

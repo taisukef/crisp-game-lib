@@ -15,10 +15,12 @@ window.options = {
   isCapturing: true,
   seed: 0, // sound seed
   theme: document.location.hash.substring(1), // crt, pixel, dark
+  viewSize: { x: 200, y: 100 },
 };
 
+const sw = window.options.viewSize.x;
 let y = 20;
-let x = 50;
+let x = sw / 2;
 const enemy = [];
 const dhit = 3;
 
@@ -34,7 +36,7 @@ window.update = () => { // canvas size 100x100
   } else {
     x--;
   }
-  x = (x + 100) % 100;
+  x = (x + sw) % sw;
   text("O", x, y);
   enemy.forEach(e => {
     text("*", e.x, e.y);
@@ -45,7 +47,7 @@ window.update = () => { // canvas size 100x100
     };
   });
   if (ticks % 10 == 0) {
-    enemy.push(vec(rnd(100), 100))
+    enemy.push(vec(rnd(sw), 100))
     addScore(1);
   }
   remove(enemy, (e) => e.y < -10);
