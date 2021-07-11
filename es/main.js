@@ -543,7 +543,7 @@ function updateScoreBoards(dt) {
     scoreBoards = scoreBoards.filter((sb) => {
         print(sb.str, sb.pos.x, sb.pos.y);
         sb.pos.y += sb.vy;
-        sb.vy *= 1 - 0.1 * dt;
+        sb.vy *= 1 - 0.1 / dt;
         sb.ticks -= dt;
         return sb.ticks > 0;
     });
