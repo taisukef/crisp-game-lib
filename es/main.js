@@ -282,9 +282,6 @@ function _update(dt) {
         ijr: input.isJustReleased,
     };
     collision.clear();
-    if (ticks < 0) {
-        ticks = 0;
-    }
     updateFunc[state](dt);
     if (view.theme.isUsingPixi) {
         view.endFill();
@@ -293,7 +290,11 @@ function _update(dt) {
         }
     }
     //ticks++;
-    ticks += dt;
+    if (ticks < 0) {
+        ticks = 0;
+    } else {
+        ticks += dt;
+    }
     if (isReplaying) {
         score = prevScore;
         time = prevTime;
@@ -358,7 +359,7 @@ function updateInGame(dt) {
     if (isShowingTime && time != null) {
         time++;
     }
-    if (isSpeedingUpSound && ticks % soundSpeedingUpInterval === 0) {
+    if (isSpeedingUpSound && Math.floor(ticks) % soundSpeedingUpInterval === 0) {
         ///sss.playInterval = 0.5 / sqrt(difficulty);
         sss.setPlayInterval(0.5 / sqrt(difficulty));
     }
