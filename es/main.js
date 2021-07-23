@@ -407,7 +407,7 @@ function updateTitle(dt) {
             terminal.print(title, Math.floor(terminalSize.x - title.length) / 2, Math.ceil(terminalSize.y * 0.2));
         }
     }
-    if (ticks === 30 || ticks == 40) {
+    if (Math.floor(ticks) === 30 || Math.floor(ticks) == 40) {
         if (typeof description !== "undefined" && description != null) {
             let maxLineLength = 0;
             description.split("\n").forEach((l) => {
@@ -437,8 +437,7 @@ function initGameOver() {
 function updateGameOver() {
     if ((isReplaying || ticks > 20) && input.isJustPressed) {
         initInGame();
-    }
-    else if (ticks === (isReplayEnabled ? 120 : 300) && !isNoTitle) {
+    } else if (ticks >= (isReplayEnabled ? 120 : 300) && !isNoTitle) {
         initTitle();
     }
 }
