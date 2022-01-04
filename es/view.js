@@ -89,7 +89,7 @@ image-rendering: pixelated;
         canvas = document.createElement("canvas");
         canvas.width = canvasSize.x;
         canvas.height = canvasSize.y;
-        context = canvas.getContext("2d");
+        context = canvas.getContext("2d", { colorSpace: "display-p3" }); // wide gamut color!
         context.imageSmoothingEnabled = false;
         canvas.style.cssText = canvasCss + crispCss;
     }
